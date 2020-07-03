@@ -6,6 +6,7 @@ Currnetly I am an Applied Statistics Master graduate students in Purdue Universi
 
 ### Academic Experiences
 University of Illinois Urbana Champaign (2014 - 2018) BS of Applied Mathematics
+
 Purdue University (2019 - ) MS of Applied Statistics
 
 ### Projects and works
