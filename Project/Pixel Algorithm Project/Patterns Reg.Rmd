@@ -1,0 +1,280 @@
+---
+title: "STAT 598 Final Project"
+author: "Dan Tran, Yunke Zhou"
+date: "4/23/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Setup
+
+## Instal packages
+```{r, warning=F,message=F}
+#install.packages("png")
+#install.packages("rlist")
+#install.packages("pracma")
+#install.packages("base")
+#install.packages("doSNOW")
+require(png)
+require(rlist)
+require(pracma)
+require(base)
+require(doSNOW)
+```
+
+## Import image
+
+```{r}
+# Read file
+my.img <- readPNG("IMG_0045.PNG")
+my.img2 <- readPNG("IMG_0046.PNG")
+my.img3 <- readPNG("IMG_0047.PNG")
+my.img4 <- readPNG("IMG_0048.PNG")
+# Check dimension
+dim(my.img)
+dim(my.img2)
+dim(my.img3)
+dim(my.img4)
+
+```
+
+
+## Display image
+```{r}
+# Create function to display imported PNG
+# Modified codes from PNG packages documentation
+
+display.img <- function(img){
+  if (exists("rasterImage")) {
+    y.val = dim(img)[1]
+    x.val = dim(img)[2]
+
+    plot(1:2, type='n', asp=(y.val/x.val),
+         bty="n", axes=F, ylab="",xlab="") # remove borders
+    
+    if (names(dev.cur()) == "windows") {
+      transparent <- img[,,4] == 0
+      img <- as.raster(img[,,1:3])
+      img[transparent] <- NA
+      rasterImage(img, 1, 1, 2, 2, interpolate=FALSE)
+    } else {
+      rasterImage(img, 1, 1, 2, 2)
+    }
+  }
+}
+
+
+# Display
+display.img(my.img)
+title('Imported Image')
+
+```
+
+# Measure patterns lengths 
+
+I modified the function a little bit but the main loop is the same. The result is the same from the old one.
+
+Modification made:
+  + Auto input my.pixel from image dimension
+  + Add default values for my.length and want.length
+  + Change i, i1 variables name
+
+```{r}
+get.pattern <- function(img, my.length=100,want.length=90){
+  my.pixels <- dim(img)[1]
+
+  result <- matrix(c(NA,NA,NA))
+  row.names(result) <- c("pixels","your length","client length")
+  
+  pixel.start=1
+  pixel.end=1
+  
+  repeat{
+    if(pixel.end==dim(img)[1]){
+      result <- cbind(result,
+                      c(pixel.end-pixel.start,
+                        round((pixel.end-pixel.start)*my.length/my.pixels,1),
+                        round((pixel.end-pixel.start)*want.length/my.pixels,1)))
+      break
+    }
+    if(all(as.matrix(img[pixel.start:pixel.end,pixel.start:pixel.end,1])==
+           as.matrix(img[pixel.start:pixel.end,pixel.start:pixel.end,1])[1,1])==FALSE){
+      result <- cbind(result,
+                      c(pixel.end-pixel.start,
+                        round((pixel.end-pixel.start)*my.length/my.pixels,1),
+                        round((pixel.end-pixel.start)*want.length/my.pixels,1)))
+      pixel.start <- pixel.end
+    }else{ 
+      pixel.end = pixel.end+1
+    }
+    
+  }
+  return(result[,-1])  
+}
+
+
+(pattern.length <- get.pattern(my.img))
+```
+
+## Modify results
+We can see that some of the columns have value of pixel equals 1 or 2, if we look at the image we can see there is some patterns there. So I created a function to combine those 1 pixel columns into one.
+
+What it does is goes through all columns in the result above, if the pixel row value is 1 or 2 then look at next column, if it also 1 or 2 then combine 2 sets of columns. Repeat until next column is neither 1 nor 2. If the pixel is neither 1 nor 2 then keep them.
+
+```{r}
+# Function to join 1 pixel columns
+clean.result <- function(pattern){
+  output = matrix(c(NA,NA,NA))
+  pattern <- cbind(pattern,matrix(c(0,0,0),3,1))
+  c = 1
+  while (c <= ncol(pattern)){
+    if(pattern[1,c]==1|pattern[1,c]==2){
+      new.col <- pattern[,c]
+      c = c + 1
+      while(pattern[1,c]==1|pattern[1,c]==2){
+        new.col <- new.col + pattern[,c]
+        c = c + 1
+      }
+      output <- cbind(output,unname(new.col))  
+    } else {
+      output <- cbind(output,pattern[,c])
+      c = c + 1
+    }
+  }
+  
+  return(output[,3:length(output[1,])-1])
+}
+
+# Run function
+clean.result(pattern.length)
+```
+
+## Display results
+
+I think that it will be nice if we can show the patterns.
+```{r}
+# Function to display recognized patterns
+display.pattern <- function(patterns,my.img){
+  patterns <- clean.result(patterns)
+  pt.pixel <- patterns[1,]
+  num.pat <- length(pt.pixel)
+  num.row <- as.integer(num.pat/8)+1
+  par(mfrow=c(num.row,(as.integer(num.pat/num.row)+1)),oma = c(0, 0, 2, 0))
+  for (i in 1:length(pt.pixel)){
+    v = pt.pixel[i]
+    if (v > 1){
+      #print(v)
+      if (i == 1){
+        pt.start <- 1
+      } else{
+        pt.start <- sum(pt.pixel[1:(i-1)],1)
+      }
+      pt.end <- pt.start + v -1
+      #cat("start: ", pt.start," end: ",pt.end, "\n")
+      display.img(my.img[1:20, pt.start:pt.end,])
+      title(paste('Pattern', i, '\nlength:', patterns[3,i], '(mm)' ),line = -12)
+    }
+  }
+  mtext("Patterns found in the image", outer = TRUE, cex = 1.5)
+
+}
+
+# Show patterns
+display.pattern(pattern.length,my.img)
+
+```
+
+
+# Parallel Computing
+
+## Main code
+```{r}
+# Setup
+cl <- makeCluster(2, type="SOCK") # 4 â? number of cores
+registerDoSNOW(cl) # Register Backend Cores for Parallel Computing
+```
+
+We take four different images with same size as samples.
+
+```{r}
+# Import new image
+
+my.img1 <- readPNG("IMG_0045.PNG")
+my.img2 <- readPNG("IMG_0046.PNG")
+my.img3 <- readPNG("IMG_0047.PNG")
+my.img4 <- readPNG("IMG_0048.PNG")
+
+# Put images into a list
+all.imgs <- list(my.img, my.img2,my.img3,my.img4)
+
+# Run in parallel
+output_parallel <- foreach (img = all.imgs) %dopar% {
+  pt <- get.pattern(img, my.length = 100, want.length = 90)
+  clean.result(pt)
+}
+
+output_parallel
+```
+
+Then we can display patterns from the result.
+
+```{r}
+display.pattern(output_parallel[[2]],my.img2)
+```
+
+
+## Benchmark
+
+Compare time cost using normal loop and parallel computing.
+```{r}
+
+iter = 100 # number of runs
+
+# Using loop
+
+loop.time <- system.time(result <- for(run in 1:iter){
+    for(img in all.imgs){
+    pt <- get.pattern(img, my.length = 100, want.length = 50)
+    clean.result(pt)
+    }
+  }
+)
+
+# Using parallel
+par.time <- system.time( for(run in 1:iter){
+    output_parallel <- foreach (img = all.imgs) %dopar% {
+    pt <- get.pattern(img, my.length = 100, want.length = 50)
+    clean.result(pt)
+    }
+  }
+)
+
+```
+
+```{r}
+#Time using doSNOW:
+print(par.time)
+#Time using loop:
+print(loop.time)
+```
+
+"User CPU time" gives the CPU time spent by the current process (i.e., the current R session)
+
+"System CPU time" gives the CPU time spent by the kernel (the operating system) on behalf of the current process.
+
+"Elapsed time" gives real time passed since the process was started.
+
+Numbers are in seconds.
+
+**Problem: doSNOW has higher elaspsed time which should be lower.**
+
+```{r}
+# Stop using doSNOW
+stopCluster(cl) 
+```
+
+
+
