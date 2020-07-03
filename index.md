@@ -7,6 +7,23 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 ### Personal Introduction
 Personal introduction text here
 
+
+
+For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+
+### Academic Experiences
+University of Illinois Urbana Champaign (2014 - 2018) BS of Applied Mathematics
+Purdue University (2019 - ) MS of Applied Statistics
+
+### Projects and works
+Adding links here
+
+### Contact
+academicyunkezhou@gmail.com
+zhou982@purdue.edu
+765-586-1151(Text message only)
+
+
 ```markdown
 Syntax highlighted code block
 
@@ -24,16 +41,3 @@ Syntax highlighted code block
 
 [Link](url) and ![Image](src)
 ```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Academic Experiences
-
-Academic experiences here.
-
-### Projects and works
-
-
-### Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
