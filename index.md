@@ -1,15 +1,8 @@
 ## Welcome to Yunke Zhou's Personal Page
-
-You can use the [editor on GitHub](https://github.com/AcademicYunkeZhou/yunke.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+[editor on GitHub](https://github.com/AcademicYunkeZhou/yunke.github.io/edit/master/index.md) 
 
 ### Personal Introduction
-Personal introduction text here
-
-
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Currnetly I am an Applied Statistics Master graduate students in Purdue University. My currently interest area is Data analysis and user interface design. The former one is based on my theoretical knowledge achieved throughout my university experience, and the latter one is an attempt of my idea about users' experience improvement.
 
 ### Academic Experiences
 University of Illinois Urbana Champaign (2014 - 2018) BS of Applied Mathematics
