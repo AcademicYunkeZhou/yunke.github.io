@@ -9,7 +9,11 @@ University of Illinois Urbana Champaign (2014 - 2018) BS of Applied Mathematics
 Purdue University (2019 - ) MS of Applied Statistics
 
 ### Projects and works
-Adding links here
+
+**Pixel Calculator Demo:** https://github.com/AcademicYunkeZhou/yunke.github.io/tree/master/Project/Pixel%20Calculator
+**Using Parallel Algorithm to Optimize Measuring Pixels and Lengths of Design Patterns:** with Duong Ngoc Tran, Francis Ma, Mengqian Shen, Min Kyung Lee https://github.com/AcademicYunkeZhou/yunke.github.io/tree/master/Project/Pixel%20Algorithm%20Project
+**Model Design, Data Analysis and Estimate for Research of the Ages of the Abalone Shells** Statistic MS Final:
+https://github.com/AcademicYunkeZhou/yunke.github.io/tree/master/Project/Stat%20MS%20Final
 
 ### Contact
 academicyunkezhou@gmail.com
@@ -17,9 +21,7 @@ zhou982@purdue.edu
 765-586-1151(Text message only)
 
 
-```markdown
-Syntax highlighted code block
-
+```
 # Header 1
 ## Header 2
 ### Header 3
