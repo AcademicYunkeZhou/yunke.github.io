@@ -189,8 +189,8 @@ segments(x0=-line,y0=t+1,x1=-1,y1=t+1,col="black")
 text(x=-line/1-2,y = t-2.1,xpd = T,label = result[3,], pos = 1, cex = 0.58, col = "blue")
 text(x=-line/1-5,5,y = t-2.1,xpd = T,label = a1[,4], pos = 1, cex = 0.58, col = "black")
 
-# RÔİÊ±ÎŞ·¨Êä³öÖĞÎÄ×Ö·û£¬´ËÌõ´ı¸Ä½ø
-text(x=120,y = 230,xpd = T,label = paste0("90mm      ","\n","ºáÊú¸ñ¾àÏàÍ¬      ","\n","2020°æÅËÍ¨É«¿¨      "),
+# Ræš‚æ—¶æ— æ³•è¾“å‡ºä¸­æ–‡å­—ç¬¦ï¼Œæ­¤æ¡å¾…æ”¹è¿›
+text(x=120,y = 230,xpd = T,label = paste0("90mm      ","\n","æ¨ªç«–æ ¼è·ç›¸åŒ      ","\n","2020ç‰ˆæ½˜é€šè‰²å¡      "),
      pos = 1, cex = 1.5, col = "black")
 
 # Color legend
