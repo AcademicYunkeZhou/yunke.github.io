@@ -12,10 +12,8 @@ Purdue University (2019 - ) MS of Applied Statistics
 ### Projects and works
 
 **Pixel Calculator Demo:** 
-2020/07&Before:
-https://github.com/AcademicYunkeZhou/yunke.github.io/blob/master/Project/Pixel%20Calculator/Pixel%20Calculator.R
-2020/08/15(adapt for 300 dpi images):
-https://github.com/AcademicYunkeZhou/yunke.github.io/blob/master/Project/Pixel%20Calculator/Pixel%20Calculator%2020200815%20300%20dpi.R
+[2020/07&Before](https://github.com/AcademicYunkeZhou/yunke.github.io/blob/master/Project/Pixel%20Calculator/Pixel%20Calculator.R)
+[2020/08/15(adapt for 300 dpi images)](https://github.com/AcademicYunkeZhou/yunke.github.io/blob/master/Project/Pixel%20Calculator/Pixel%20Calculator%2020200815%20300%20dpi.R)
 
 
 **Using Parallel Algorithm to Optimize Measuring Pixels and Lengths of Design Patterns:** Stat 598 Final with Duong Ngoc Tran, Francis Ma, Mengqian Shen, Min Kyung Lee https://github.com/AcademicYunkeZhou/yunke.github.io/blob/master/Project/Pixel%20Algorithm%20Project/Patterns%20Reg.Rmd
