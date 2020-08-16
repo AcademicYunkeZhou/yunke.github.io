@@ -27,7 +27,9 @@ Purdue University (2019 - ) MS of Applied Statistics
 
 ### Contact
 academicyunkezhou@gmail.com
+
 zhou982@purdue.edu
+
 765-586-1151(Text message only)
 
 
