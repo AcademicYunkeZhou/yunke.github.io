@@ -13,7 +13,7 @@ Purdue University (2019 - ) MS of Applied Statistics
 
 **Pixel Calculator(Updating):** 
 
-[2020/07(Original Code)](https://github.com/AcademicYunkeZhou/yunke.github.io/blob/master/Project/Pixel%20Calculator/Pixel%20Calculator.R)
+[2020/07 & Before (First Update on Github)](https://github.com/AcademicYunkeZhou/yunke.github.io/blob/master/Project/Pixel%20Calculator/Pixel%20Calculator.R)
 
 [2020/08/15(adapt for 300 dpi images)](https://github.com/AcademicYunkeZhou/yunke.github.io/blob/master/Project/Pixel%20Calculator/Pixel%20Calculator%2020200815%20300%20dpi.R)
 
