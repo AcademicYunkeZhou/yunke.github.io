@@ -17,7 +17,7 @@ Purdue University (2019 - ) MS of Applied Statistics
 
 [2020/08/15(adapt for 300 dpi images)](https://github.com/AcademicYunkeZhou/yunke.github.io/blob/master/Project/Pixel%20Calculator/Pixel%20Calculator%2020200815%20300%20dpi.R)
 
-[**2020/09/24(Greatly increased accuracy/Bug fixing)**]
+[2020/09/24(Greatly increased accuracy/Bug fixing)]
 (https://github.com/AcademicYunkeZhou/yunke.github.io/blob/master/Project/Pixel%20Calculator/Pixel%20Calculator%201063_95%202020.9.24.R)
 
 **Individual Projects:** 
