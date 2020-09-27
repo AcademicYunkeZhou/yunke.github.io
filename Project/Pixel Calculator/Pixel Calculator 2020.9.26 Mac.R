@@ -10,7 +10,7 @@ install.packages("imager")
 install.packages("grDevices")
 install.packages("readr")
 install.packages("bmp")
-install.packages("imager")
+
 
 
 
