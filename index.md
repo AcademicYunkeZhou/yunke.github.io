@@ -19,7 +19,7 @@ Purdue University (2019 - ) MS of Applied Statistics
 
 [2020/09/24(Greatly increased accuracy/Bug fixing)](https://github.com/AcademicYunkeZhou/yunke.github.io/blob/master/Project/Pixel%20Calculator/Pixel%20Calculator%202020.9.24.R)
 
-[2020/09/24(Mac applicable version)](https://github.com/AcademicYunkeZhou/yunke.github.io/blob/master/Project/Pixel%20Calculator/Pixel%20Calculator%202020.9.26%20Mac.R)
+[2020/09/26(Mac applicable version)](https://github.com/AcademicYunkeZhou/yunke.github.io/blob/master/Project/Pixel%20Calculator/Pixel%20Calculator%202020.9.26%20Mac.R)
 
 **Individual Projects:** 
 
